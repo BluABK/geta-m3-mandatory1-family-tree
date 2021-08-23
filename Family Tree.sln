@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family Tree", "Family Tree.csproj", "{D360D0EE-665E-4BDF-B535-559034806996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family Tree", "src\Family Tree.csproj", "{D360D0EE-665E-4BDF-B535-559034806996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeTest", "FamilyTreeTest\FamilyTreeTest.csproj", "{7919A047-FFC4-4E66-9D11-8A25A4E816B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeTest", "tests\FamilyTreeTest.csproj", "{7919A047-FFC4-4E66-9D11-8A25A4E816B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

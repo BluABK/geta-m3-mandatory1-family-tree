@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FamilyTree;
+//using FamilyTree;
 
 namespace FamilyTreeTest
 {
@@ -9,15 +9,15 @@ namespace FamilyTreeTest
         [TestMethod]
         public void TestMethod1()
         {
-            var p = new Person
+            var p = new FamilyTree.Person
             {
                 Id = 17,
                 FirstName = "Ola",
                 LastName = "Nordmann",
                 BirthYear = 2000,
                 DeathYear = 3000,
-                Father = new Person() { Id = 23, FirstName = "Per" },
-                Mother = new Person() { Id = 29, FirstName = "Lise" },
+                Father = new FamilyTree.Person() { Id = 23, FirstName = "Per" },
+                Mother = new FamilyTree.Person() { Id = 29, FirstName = "Lise" },
             };
 
             var actualDescription = p.GetDescription();

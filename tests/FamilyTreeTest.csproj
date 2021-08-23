@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Family Tree.csproj" />
+    <ProjectReference Include="..\src\Family Tree.csproj" />
   </ItemGroup>
 
 </Project>
