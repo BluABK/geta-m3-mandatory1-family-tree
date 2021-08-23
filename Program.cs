@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace Family_Tree
+namespace FamilyTree
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
         }
     }
