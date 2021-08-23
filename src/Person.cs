@@ -2,6 +2,7 @@
 {
     public class Person
     {
+        private const int IdUnset = -1;
         private const int YearUnset = -1;
         private const string NameUnset = "";
 
@@ -19,23 +20,15 @@
             // Used when member values are set directly upon instantiation.
         }
 
-        public Person(int id, string firstName = NameUnset, string lastName = NameUnset, int birthYear = YearUnset, int deathYear = YearUnset, Person father = null, Person mother = null)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            BirthYear = birthYear;
-            DeathYear = deathYear;
-            Mother = mother;
-            Father = father;
-
-        }
-
         public string GetDescription()
         {
-            string description = "";
+            // Get required properties of mother and father (if null, use unset signifiers).
+            int motherId = Mother != null ? Mother.Id : IdUnset;
+            string motherName = Mother != null ? Mother.FirstName : NameUnset;
+            int fatherId = Father != null ? Father.Id : IdUnset;
+            string fatherName = Father != null ? Father.FirstName : NameUnset;
 
-            return description;
+            return $"{FirstName} {LastName} (Id={Id}) Født: {BirthYear} Død: {DeathYear} Far: {fatherName} (Id={fatherId}) Mor: {motherName} (Id={motherId})";
         }
     }
 }
