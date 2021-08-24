@@ -4,9 +4,9 @@ namespace FamilyTree
 {
     public class Person
     {
-        private const int IdUnset = -1;
-        private const int YearUnset = -1;
-        private const string NameUnset = "";
+        public const int IdUnset = -1;
+        public const int YearUnset = -1;
+        public const string NameUnset = "";
 
         public int Id = IdUnset;
         public string FirstName = NameUnset;
