@@ -47,14 +47,44 @@ namespace FamilyTree
             // Try to parse id string as int, if successful int id is initialized with its value, if not return error msg.
             if (!Int32.TryParse(idString, out int id)) return $"Ugyldig ID (\"{idString}\")!";
 
-            foreach (Person p in people)
+            foreach (Person person in people)
             {
                 // If ID match is found, return its description.
-                if (p.Id == id) return p.GetDescription();
+                if (person.Id == id)
+                {
+                    // Person's description.
+                    string description = person.GetDescription();
+
+                    // Children, if any.
+                    List<Person> children = GetChildrenByParentId(person.Id);
+
+                    if (children.Count > 0)
+                    {
+                        description += $"\n  Barn:\n";
+
+                        for (int i = 0; i < children.Count; i++) {
+                            description += $"    {children[i].GetDescription(showParents: false)}\n";
+                        }
+                    }
+                    
+                    return description;
+                }
             }
 
             // If we got here, the search failed. Return error msg.
             return $"Fant ingen person med ID {id}!";
+        }
+
+        public List<Person> GetChildrenByParentId(int parentId)
+        {
+            List<Person> children = new();
+
+            foreach (Person p in people)
+            {
+                if (p.HasParentWithId(parentId)) children.Add(p);
+            }
+
+            return children;
         }
 
         private string GetPeopleDescriptions()
