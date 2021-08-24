@@ -25,5 +25,21 @@ namespace FamilyTreeTest
 
             Assert.AreEqual(expectedDescription, actualDescription);
         }
+
+        [TestMethod]
+        public void TestNoFields()
+        {
+            var p = new Person
+            {
+                Id = 1,
+            };
+
+            var actualDescription = p.GetDescription();
+            var expectedDescription = "(Id=1)";
+
+            Assert.AreEqual(expectedDescription, actualDescription);
+        }
+
+
     }
 }
