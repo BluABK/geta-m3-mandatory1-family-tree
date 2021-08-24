@@ -19,9 +19,10 @@ namespace FamilyTree
 
         public string GetHelp()
         {
-            string help = "Help!";
-            
-            return help;
+            return "Gyldige kommandoer er:" + Environment.NewLine
+                 + "\t- hjelp - Vis denne menyen." + Environment.NewLine
+                 + "\t- liste - Vis liste over alle personer." + Environment.NewLine
+                 + "\t- vis <id> - Vis person med gitt ID (int)." + Environment.NewLine;
         }
 
         public string GetCommandError(string command)
@@ -34,9 +35,9 @@ namespace FamilyTree
             string[] arguments = command.Split(' ');
 
             // Check if the first argument is a valid command, and handle accordingly.
-            if (arguments[0] == "hjelp") return GetHelp();
-            if (arguments[0] == "liste") return GetPersonsList();
-            if (arguments[0] == "vis" && arguments.Length > 1) return GetPersonById(arguments[1]);
+            if (arguments[0].ToLower() == "hjelp") return GetHelp();
+            if (arguments[0].ToLower() == "liste") return GetPersonsList();
+            if (arguments[0].ToLower() == "vis" && arguments.Length > 1) return GetPersonById(arguments[1]);
 
             return GetCommandError(command);
         }
