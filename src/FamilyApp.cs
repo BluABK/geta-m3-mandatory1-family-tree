@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FamilyTree
 {
     public class FamilyApp
     {
-        public string WelcomeMessage = $"Velkommen til slektstre-programmet!\n\n{GetHelp()}";
+        public string WelcomeMessage = $"Velkommen til slektstre-programmet!{Environment.NewLine}{Environment.NewLine}{GetHelp()}";
         public string CommandPrompt = ">: ";
-        private Person[] people;
+        private readonly List<Person> people;
 
         public FamilyApp(params Person[] people)
         {
-            this.people = people;
+            this.people = new List<Person>(people);
         }
 
         public static string GetHelp()
@@ -25,7 +22,7 @@ namespace FamilyTree
                  + "  - vis <id> - Vis person med gitt ID (int)." + Environment.NewLine;
         }
 
-        public string GetCommandError(string command)
+        public static string GetCommandError(string command)
         {
             return $"Ugyldig kommando (\"{command}\")! Gyldige kommandoer er: \"hjelp\", \"liste\" og \"vis\".";
         }
@@ -60,10 +57,10 @@ namespace FamilyTree
 
                     if (children.Count > 0)
                     {
-                        description += $"\n  Barn:\n";
+                        description += $"{Environment.NewLine}  Barn:{Environment.NewLine}";
 
                         for (int i = 0; i < children.Count; i++) {
-                            description += $"    {children[i].GetDescription(showParents: false)}\n";
+                            description += $"    {children[i].GetDescription(showParents: false)}{Environment.NewLine}";
                         }
                     }
                     

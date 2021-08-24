@@ -29,10 +29,10 @@ namespace FamilyTreeTest
             var app =               new FamilyApp(sverreMagnus, ingridAlexandra, haakon);
 
             var actualResponse =    app.HandleCommand("vis 3");
-            var expectedResponse =  "Haakon Magnus (Id=3) Født: 1973 Far: Harald (Id=6)\n"
-                                 +  "  Barn:\n"
-                                 +  "    Sverre Magnus (Id=1) Født: 2005\n"
-                                 +  "    Ingrid Alexandra (Id=2) Født: 2004\n";
+            var expectedResponse =  $"Haakon Magnus (Id=3) Født: 1973 Far: Harald (Id=6){Environment.NewLine}"
+                                 +  $"  Barn:{Environment.NewLine}"
+                                 +  $"    Sverre Magnus (Id=1) Født: 2005{Environment.NewLine}"
+                                 +  $"    Ingrid Alexandra (Id=2) Født: 2004{Environment.NewLine}";
             
             // Assert.
             Assert.AreEqual(expectedResponse, actualResponse);
