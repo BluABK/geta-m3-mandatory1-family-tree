@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace FamilyTree
 {
-    class FamilyApp
+    public class FamilyApp
     {
         public string WelcomeMessage = "Velkommen til slektstre-programmet!";
         public string CommandPrompt = ">: ";
-        private Person[] persons;
+        private Person[] people;
 
-        public FamilyApp(params Person[] persons)
+        public FamilyApp(params Person[] people)
         {
-            this.persons = persons;
+            this.people = people;
         }
 
         public string GetHelp()
@@ -36,18 +36,18 @@ namespace FamilyTree
 
             // Check if the first argument is a valid command, and handle accordingly.
             if (arguments[0].ToLower() == "hjelp") return GetHelp();
-            if (arguments[0].ToLower() == "liste") return GetPersonsDescription();
-            if (arguments[0].ToLower() == "vis" && arguments.Length > 1) return GetPersonDescriptionById(arguments[1]);
+            if (arguments[0].ToLower() == "liste") return GetPeopleDescriptions();
+            if (arguments[0].ToLower() == "vis" && arguments.Length > 1) return GetDescriptionByPersonId(arguments[1]);
 
             return GetCommandError(command);
         }
 
-        private string GetPersonDescriptionById(string idString)
+        private string GetDescriptionByPersonId(string idString)
         {
             // Try to parse id string as int, if successful int id is initialized with its value, if not return error msg.
             if (!Int32.TryParse(idString, out int id)) return $"Ugyldig ID (\"{idString}\")!";
 
-            foreach (Person p in persons)
+            foreach (Person p in people)
             {
                 // If ID match is found, return its description.
                 if (p.Id == id) return p.GetDescription();
@@ -57,11 +57,11 @@ namespace FamilyTree
             return $"Fant ingen person med ID {id}!";
         }
 
-        private string GetPersonsDescription()
+        private string GetPeopleDescriptions()
         {
             string personsDescriptions = string.Empty;
 
-            foreach (Person p in persons)
+            foreach (Person p in people)
             {
                 personsDescriptions += p.GetDescription() + Environment.NewLine;
             }

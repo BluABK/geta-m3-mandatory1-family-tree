@@ -4,7 +4,7 @@ using FamilyTree;
 namespace FamilyTreeTest
 {
     [TestClass]
-    public class UnitTest1
+    public class PersonTest
     {
         [TestMethod]
         public void TestAllFields()
