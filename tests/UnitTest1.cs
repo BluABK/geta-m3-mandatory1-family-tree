@@ -40,6 +40,22 @@ namespace FamilyTreeTest
             Assert.AreEqual(expectedDescription, actualDescription);
         }
 
+        [TestMethod]
+        public void TestSomeFields()
+        {
+            var p = new Person
+            {
+                Id = 42,
+                FirstName = "Ola",
+                BirthYear = 2000,
+                Mother = new Person() { Id = 32, FirstName = "Lise" },
+            };
+
+            var actualDescription = p.GetDescription();
+            var expectedDescription = "Ola (Id=42) Født: 2000 Mor: Lise (Id=32)";
+
+            Assert.AreEqual(expectedDescription, actualDescription);
+        }
 
     }
 }

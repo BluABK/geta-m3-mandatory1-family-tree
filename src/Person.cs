@@ -28,7 +28,7 @@ namespace FamilyTree
 
             // Construct short description
             if (FirstName != NameUnset) descriptionItems.Add(FirstName);
-            if (Id != IdUnset) descriptionItems.Add($"(Id={Id})");
+            if (Id != IdUnset)          descriptionItems.Add($"(Id={Id})");
 
             return string.Join(' ', descriptionItems);
         }
