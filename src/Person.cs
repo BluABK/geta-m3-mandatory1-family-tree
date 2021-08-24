@@ -22,9 +22,19 @@ namespace FamilyTree
             // Used when member values are set directly upon instantiation.
         }
 
+        public string GetBriefDescription()
+        {
+            List<string> descriptionItems = new();
+
+            // Construct short description
+            if (FirstName != NameUnset) descriptionItems.Add(FirstName);
+            if (Id != IdUnset) descriptionItems.Add($"(Id={Id})");
+
+            return string.Join(' ', descriptionItems);
+        }
+
         public string GetDescription()
         {
-            //string description = string.Empty;
             List<string> descriptionItems = new();
 
             // Construct description:
@@ -34,8 +44,8 @@ namespace FamilyTree
             if (Id != IdUnset)          descriptionItems.Add($"(Id={Id})");
             if (BirthYear != YearUnset) descriptionItems.Add($"Født: {BirthYear}");
             if (DeathYear != YearUnset) descriptionItems.Add($"Død: {DeathYear}");
-            if (Father != null)         descriptionItems.Add($"Far: {Father.GetDescription()}");
-            if (Mother != null)         descriptionItems.Add($"Mor: {Mother.GetDescription()}");
+            if (Father != null)         descriptionItems.Add($"Far: {Father.GetBriefDescription()}");
+            if (Mother != null)         descriptionItems.Add($"Mor: {Mother.GetBriefDescription()}");
 
             // 2. Construct and return description string based on available description items.
             return string.Join(' ', descriptionItems);
