@@ -36,13 +36,13 @@ namespace FamilyTree
 
             // Check if the first argument is a valid command, and handle accordingly.
             if (arguments[0].ToLower() == "hjelp") return GetHelp();
-            if (arguments[0].ToLower() == "liste") return GetPersonsList();
-            if (arguments[0].ToLower() == "vis" && arguments.Length > 1) return GetPersonById(arguments[1]);
+            if (arguments[0].ToLower() == "liste") return GetPersonsDescription();
+            if (arguments[0].ToLower() == "vis" && arguments.Length > 1) return GetPersonDescriptionById(arguments[1]);
 
             return GetCommandError(command);
         }
 
-        private string GetPersonById(string idString)
+        private string GetPersonDescriptionById(string idString)
         {
             // Try to parse id string as int, if successful int id is initialized with its value, if not return error msg.
             if (!Int32.TryParse(idString, out int id)) return $"Ugyldig ID (\"{idString}\")!";
@@ -57,7 +57,7 @@ namespace FamilyTree
             return $"Fant ingen person med ID {id}!";
         }
 
-        private string GetPersonsList()
+        private string GetPersonsDescription()
         {
             string personsDescriptions = string.Empty;
 
