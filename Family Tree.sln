@@ -9,7 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyTreeTest", "tests\Fam
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55576D97-451A-48DF-9F59-ADF1CF7A3CD2}"
 	ProjectSection(SolutionItems) = preProject
-		.travis.yml = .travis.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
