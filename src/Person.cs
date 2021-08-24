@@ -16,36 +16,41 @@ namespace FamilyTree
         public Person Mother = null;
         public Person Father = null;
 
-        public Person()
+        public bool HasMother()
         {
-            // Empty constructor.
-            // Used when member values are set directly upon instantiation.
+            return Mother != null;
         }
 
-        public string GetBriefDescription()
+        public bool HasFather()
         {
-            List<string> descriptionItems = new();
-
-            // Construct short description
-            if (FirstName != NameUnset) descriptionItems.Add(FirstName);
-            if (Id != IdUnset)          descriptionItems.Add($"(Id={Id})");
-
-            return string.Join(' ', descriptionItems);
+            return Father != null;
         }
 
-        public string GetDescription()
+        public bool HasParentWithId(int id)
+        {
+            // Determine IDs pre-emptively, in case a parent is missing and would thus be null.
+            int fatherId = HasFather() ? Father.Id : IdUnset;
+            int motherId = HasMother() ? Mother.Id : IdUnset;
+
+            return (fatherId == id || motherId == id);
+        }
+
+        public string GetDescription(bool showFirstName = true, bool showLastName = true, bool showId = true, bool showBirthYear = true, bool showDeathYear = true, bool showParents = true)
         {
             List<string> descriptionItems = new();
 
             // Construct description:
             // 1. Populate list of possible description items.
-            if (FirstName != NameUnset) descriptionItems.Add(FirstName);
-            if (LastName != NameUnset)  descriptionItems.Add(LastName);
-            if (Id != IdUnset)          descriptionItems.Add($"(Id={Id})");
-            if (BirthYear != YearUnset) descriptionItems.Add($"Født: {BirthYear}");
-            if (DeathYear != YearUnset) descriptionItems.Add($"Død: {DeathYear}");
-            if (Father != null)         descriptionItems.Add($"Far: {Father.GetBriefDescription()}");
-            if (Mother != null)         descriptionItems.Add($"Mor: {Mother.GetBriefDescription()}");
+            if (showFirstName   && FirstName != NameUnset) descriptionItems.Add(FirstName);
+            if (showLastName    && LastName != NameUnset)  descriptionItems.Add(LastName);
+            if (showId          && Id != IdUnset)          descriptionItems.Add($"(Id={Id})");
+            if (showBirthYear   && BirthYear != YearUnset) descriptionItems.Add($"Født: {BirthYear}");
+            if (showDeathYear   && DeathYear != YearUnset) descriptionItems.Add($"Død: {DeathYear}");
+            if (showParents)
+            {
+                if (Father != null) descriptionItems.Add($"Far: {Father.GetDescription(showLastName: false, showBirthYear: false, showDeathYear: false, showParents: false)}");
+                if (Mother != null) descriptionItems.Add($"Mor: {Mother.GetDescription(showLastName: false, showBirthYear: false, showDeathYear: false, showParents: false)}");
+            }
 
             // 2. Construct and return description string based on available description items.
             return string.Join(' ', descriptionItems);
