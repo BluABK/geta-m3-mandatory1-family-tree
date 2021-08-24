@@ -8,7 +8,7 @@ namespace FamilyTree
 {
     public class FamilyApp
     {
-        public string WelcomeMessage = "Velkommen til slektstre-programmet!";
+        public string WelcomeMessage = $"Velkommen til slektstre-programmet!\n\n{GetHelp()}";
         public string CommandPrompt = ">: ";
         private Person[] people;
 
@@ -17,12 +17,12 @@ namespace FamilyTree
             this.people = people;
         }
 
-        public string GetHelp()
+        public static string GetHelp()
         {
             return "Gyldige kommandoer er:" + Environment.NewLine
-                 + "\t- hjelp - Vis denne menyen." + Environment.NewLine
-                 + "\t- liste - Vis liste over alle personer." + Environment.NewLine
-                 + "\t- vis <id> - Vis person med gitt ID (int)." + Environment.NewLine;
+                 + "  - hjelp    - Vis denne menyen." + Environment.NewLine
+                 + "  - liste    - Vis liste over alle personer." + Environment.NewLine
+                 + "  - vis <id> - Vis person med gitt ID (int)." + Environment.NewLine;
         }
 
         public string GetCommandError(string command)
